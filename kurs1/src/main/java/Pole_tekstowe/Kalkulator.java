@@ -75,8 +75,13 @@ public class Kalkulator extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		if (rbCelToFar.isSelected()) {
 			tempCelcius = Double.parseDouble(tCelcus.getText()); 
-			tempFarenheit = 32.0 + (9.0 / 5.0) * tempCelcius; 
+			tempFarenheit =(9.0 / 5.0) * tempCelcius + 32.0; 
 			tFarenheit.setText(String.valueOf(tempFarenheit)); 
+		}
+		else if (rbFarToCel.isSelected()) {
+			tempFarenheit = Double.parseDouble(tFarenheit.getText()); 
+			tempCelcius = 5.0 / 9.0 * (tempFarenheit - 32.0)  ;
+			tCelcus.setText(String.valueOf(tempCelcius));
 		}
 	}
 	
