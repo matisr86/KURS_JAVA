@@ -26,7 +26,7 @@ public class JMenuTest extends JFrame implements ActionListener{
 	public JMenuTest () {
 		
 		setTitle("Demonstracja Menu");
-		setSize(800 , 800);
+		setSize(400 , 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
 
