@@ -2,15 +2,18 @@ package OknaDialogowe;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.Box;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+import javax.swing.plaf.FileChooserUI;
 
 
 
@@ -34,11 +37,19 @@ public class JMenuTest extends JFrame implements ActionListener{
 		
 		
 		menuPlik = new JMenu("Plik"); 
+		
 		mOtworz = new JMenuItem("Otwórz", 'O');
+		mOtworz.addActionListener(this);
+		
 		mZapisz = new JMenuItem("Zapisz");
+		mZapisz.addActionListener(this);
+		
 		mWyjscie = new JMenuItem("Wyjście"); 
 		
 		menuPlik.add(mOtworz); 
+		
+		
+		
 		menuPlik.add(mZapisz) ;
 		menuPlik.addSeparator();
 		menuPlik.add(mWyjscie) ;
@@ -98,6 +109,21 @@ public class JMenuTest extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
 		
 		Object zrodlo = e.getSource(); 
+		if ( zrodlo == mOtworz){
+			JFileChooser fc = new JFileChooser(); 
+			if (fc.showOpenDialog (null) == JFileChooser.APPROVE_OPTION) {
+				File plik = fc.getSelectedFile(); 
+				JOptionPane.showMessageDialog(null, "Wybrany plik to" + plik.getAbsolutePath());
+			}
+			
+		}
+		else if (zrodlo == mZapisz){
+			JFileChooser fc = new JFileChooser(); 
+			if (fc.showSaveDialog(null)== JFileChooser.APPROVE_OPTION) {
+				File plik = fc.getSelectedFile(); 
+				JOptionPane.showMessageDialog(null, "Wybrany plik to" + plik);
+			}
+		}
 		
 		if (zrodlo == mWyjscie){
 			int odp = JOptionPane.showConfirmDialog(null,  "Czy na pewno chcesz zamknąć program?" , "Pytanie", JOptionPane.YES_NO_OPTION) ;
@@ -126,7 +152,7 @@ public class JMenuTest extends JFrame implements ActionListener{
 		double metry = Double.parseDouble(sMetry) ; 
 		double stopy = metry / 0.3048; 
 		String sStopy = String.format("%.2f", stopy);
-		JOptionPane.showConfirmDialog(null, sStopy);
+		JOptionPane.showConfirmDialog (null, sStopy);
 		}
 		
 		}
