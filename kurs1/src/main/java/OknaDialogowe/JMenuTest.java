@@ -41,6 +41,7 @@ public class JMenuTest extends JFrame implements ActionListener{
 		mOtworz = new JMenuItem("Otwórz", 'O');
 		mOtworz.addActionListener(this);
 		
+		
 		mZapisz = new JMenuItem("Zapisz");
 		mZapisz.addActionListener(this);
 		
